@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro to Javascript</title>
+</head>
+
+<body>
+    <h3>1. How javascript runs in browser ?</h3>
+    <p>When we run JavaScript in a browser, two main components work together: the JavaScript Engine (which compiles and
+        executes code) and the Browser Runtime Environment (which provides access to the DOM, networking, and
+        asynchronous timing). <br> JavaScript runs in the browser inside a specialized JavaScript Runtime Environment
+        powered by a JavaScript Engine (like Google Chrome’s V8 Engine or Firefox's SpiderMonkey). Because computers
+        cannot understand human-written code directly, the browser must dynamically parse, compile, and execute it using
+        a single-threaded architecture.</p>
+    <p>Your JavaScript code does not run in a vacuum. It interacts with three core browser systems:The Call Stack: This
+        tracks where your program is currently executing using a First-In, Last-Out mechanism. If you call a function,
+        it gets pushed onto the stack. When it returns, it pops off. Because JavaScript is single-threaded, it can only
+        process one stack item at a time.Web APIs: These are external features built into the browser, not the language
+        itself. When you use fetch(), setTimeout(), or attach a click listener to the Document Object Model (DOM), the
+        browser handles those tasks in the background so your main thread doesn't freeze up.The Callback Queue & Event
+        Loop: Once a background Web API finishes (like a timer ending), its callback function is sent to the Callback
+        Queue. The Event Loop continuously monitors the system: the moment your Call Stack becomes completely empty, it
+        pushes the next item from the queue onto the stack to be run.</p>
+
+    <h3>2. Var, let, const difference</h3>
+    <p>The key differences between var, let, and const in JavaScript lie in their scope, how they handle reassignment,
+        and how they behave during hoisting. Originally, var was the only way to declare variables in JavaScript. It is
+        function-scoped, meaning a variable defined with var inside a block like an if statement or for loop leaks out
+        into the surrounding function or global scope. Additionally, var allows variables to be re-declared and
+        reassigned freely within the same scope. During hoisting, var variables are moved to the top of their scope and
+        initialized with undefined, allowing them to be accessed before their actual line of declaration without
+        throwing an error. <br> To fix the bugs caused by var's loose scoping rules, ES6 introduced let and const, both
+        of which are strictly block-scoped and only exist inside the pair of curly braces {} where they are defined. The
+        let keyword allows you to reassign values—making it ideal for loop counters or variables that change—but
+        prevents you from re-declaring the same variable within the same scope. On the other hand, const creates a
+        read-only reference that must be initialized immediately upon declaration and cannot be reassigned or
+        re-declared, though properties of objects or elements of arrays declared with const can still be modified.
+        Unlike var, both let and const enter a Temporal Dead Zone during hoisting, meaning if you attempt to access them
+        before their declaration line, JavaScript will throw a ReferenceError instead of returning undefined.</p>
+    <p> <b>Variable hoisting</b> in JavaScript is the default behavior where the engine moves variable and function
+        declarations
+        to the top of their containing scope during the compilation phase, before executing any code. When a variable is
+        declared using the var keyword, its declaration is hoisted to the top of its scope and automatically initialized
+        with a value of undefined. Because of this automatic initialization, accessing a var variable prior to its
+        actual line of code in the source file will not throw a crash or error; instead, it simply evaluates to
+        undefined. This mechanism allows code execution to proceed even when variables are referenced prematurely,
+        though it frequently leads to unexpected runtime bugs and logical errors in complex applications. <br>
+        The <b>Temporal Dead Zone (TDZ)</b> was introduced alongside let and const in ES6 to address the potential
+        pitfalls of
+        var hoisting. Variables declared with let and const are also hoisted to the top of their scope during
+        compilation, but unlike var, they are not initialized with a default value. The TDZ refers to the specific
+        region of code from the very beginning of the enclosing scope up until the exact line where the variable
+        declaration and initialization are executed. If any attempt is made to read, write, or access a let or const
+        variable while it is trapped inside this Temporal Dead Zone, JavaScript strictly throws a ReferenceError. This
+        temporal boundary enforces better programming discipline by ensuring that variables cannot be used before they
+        are explicitly defined and given an intended value.</p>
+    <h3>3. Data types and Data Conversions, String Coercion with +</h3>
+    <p>JavaScript is a dynamically typed language, meaning variable types are determined at runtime automatically. Data
+        types are split into two categories: Primitive and Non-Primitive (Objects). Primitive types represent single,
+        immutable values stored directly in memory, which include String for text, Number for integers and
+        floating-point values, BigInt for arbitrarily large integers, Boolean for logical truth values, Undefined for
+        unassigned variables, Null for the intentional absence of a value, and Symbol for unique keys. In contrast,
+        non-primitive types—primarily Object, as well as collections like Array and executable blocks like Function—are
+        mutable and stored by reference, allowing complex collections of data and functionality to be grouped together.
+        <br> Data conversion in JavaScript occurs when a value of one type is transformed into another, which happens
+        either explicitly or implicitly. Explicit conversion, also known as type casting, occurs when a developer
+        intentionally transforms a value using built-in functions like String(), Number(), Boolean(). Implicit
+        conversion, often referred to as type coercion, happens automatically behind the scenes when operators encounter
+        mismatched types. For example, using the binary addition operator + with a string and a number coerces the
+        number into a string for concatenation, whereas subtraction, multiplication, and division coerce strings into
+        numbers for numeric calculations. <br> String Coercion with + If any operand of the + operator is a string,
+        JavaScript converts the other operand to a string and concatenates them.
+    </p>
+
+    <h3>4. Operators</h3>
+    <p>Operators in JavaScript are special symbols or keywords used to perform operations on values and variables, which
+        are referred to as operands. JavaScript categorizes operators into several main groups based on their behavior,
+        starting with arithmetic operators like addition, subtraction, multiplication, and division, which carry out
+        basic mathematical calculations along with specialized operations like exponentiation and modulus for remainder
+        calculations. Assignment operators are used to assign or update values stored in variables, ranging from the
+        simple equal sign to compound operators like += or *=, which perform an arithmetic operation and update the
+        variable in a single step. Furthermore, comparison operators evaluate the relationship between two operands and
+        return a boolean true or false, distinguishing between loose equality ==, which performs implicit type
+        conversion, and strict equality ===, which checks both value and data type without coercion. <br>
+        Beyond basic math and value comparison, JavaScript relies heavily on logical, unary, and ternary operators to
+        control application flow and state. Logical operators such as AND &&, OR ||, and NOT ! combine or invert boolean
+        values and short-circuit evaluation during execution when the outcome is already guaranteed by the first
+        operand. Unary operators act on a single operand, encompassing increment and decrement operators ++ and --, the
+        typeof operator for inspecting data types, and the delete operator for removing object properties. Conditional
+        logic can also be concisely expressed using the ternary operator ? :, which evaluates a condition and selects
+        one of two expressions based on the boolean result. Finally, JavaScript includes lower-level bitwise operators
+        that treat operands as 32-bit binary digits, along with modern operators like the nullish coalescing operator ??
+        for handling default values and optional chaining ?. for safely accessing deeply nested object properties
+        without triggering execution errors.</p>
+
+    <h3>4. Conditionals</h3>
+    <p>Conditionals in JavaScript are control structures that execute specific blocks of code depending on whether a
+        given condition evaluates to a boolean true or false. The primary conditional mechanism is the if...else
+        statement, where an initial condition is checked within parentheses; if it is true, the corresponding block
+        runs, while an optional else if branch can test subsequent conditions, and an optional else block serves as a
+        fallback when all preceding checks evaluate to false. For scenarios involving a single expression compared
+        against multiple discrete potential values, the switch statement provides a clean alternative by evaluating the
+        expression against various case clauses, using break statements to prevent fall-through execution to subsequent
+        cases, and offering a default clause to catch unmatched values. <br>
+        Beyond block-based structures, JavaScript offers concise conditional constructs for inline evaluation and
+        handling missing values. The ternary operator ? : acts as a compact, single-line shorthand for simple if...else
+        logic, taking three operands: a condition, an expression to execute if the condition is truthy, and an
+        expression if it is falsy. Additionally, logical operators like the short-circuiting AND && and OR || operators
+        can double as lightweight conditional gates, while the modern nullish coalescing operator ?? specifically
+        provides default values when a variable evaluates to null or undefined. Because conditionals automatically
+        coerce non-boolean expressions inside their control checks into booleans, understanding how JavaScript evaluates
+        truthy values (like non-empty strings and objects) versus falsy values (like 0, "", null, undefined, and NaN) is
+        essential for predictable flow control.</p>
+
+    <h3>5. Loops</h3>
+    <p>Loops in JavaScript are control structures that repeatedly execute a block of code as long as a specified
+        condition remains true, allowing developers to automate repetitive tasks and iterate over data structures
+        efficiently. The traditional for loop is ideal for counting-based iterations where the number of executions is
+        known in advance, utilizing three explicit parameters: initialization, a continuation condition checked before
+        each cycle, and a post-iteration increment or decrement. In contrast, the while loop checks a boolean condition
+        prior to running its body, continuously looping until that condition evaluates to false, making it well-suited
+        for situations where the total number of iterations is unknown beforehand; its counterpart, the do...while loop,
+        guarantees that the code block executes at least once by placing the condition check at the end of the iteration
+        rather than the beginning. <br>
+        When working directly with data structures, specialized iteration loops like for...in and for...of offer cleaner
+        syntax tailored to distinct object types. The for...in loop iterates over the enumerable property keys (or
+        indices) of an object or array, making it useful for inspecting object key-value pairs, though it is generally
+        avoided for array values because key order is not guaranteed and inherited prototype properties may
+        inadvertently be included. Conversely, the for...of loop was introduced in ES6 specifically to iterate over the
+        actual values of iterable objects—such as Array, String, Map, Set, and NodeList—without worrying about indices
+        or keys. Both modern and classical loops can be fine-tuned using control statements like break, which exits the
+        loop entirely, and continue, which skips the remainder of the current iteration and advances directly to the
+        next cycle.</p>
+
+    <h3>6. Functions (declaration, expression, arrow)</h3>
+    <p>Functions in JavaScript are fundamental building blocks designed to encapsulate reusable blocks of code that
+        execute a specific task when invoked. The traditional approach is a function declaration, defined using the
+        function keyword followed by a mandatory name and parameter list. Function declarations are hoisted to the top
+        of their enclosing scope during the compilation phase, meaning they can be safely called in code prior to their
+        physical line of declaration. This makes them ideal for defining top-level logic or utility functions that need
+        to be accessible across an entire script or module. <br>
+        In contrast, a function expression defines a function as part of a larger expression, typically by assigning an
+        anonymous or named function to a variable. Unlike declarations, function expressions are not hoisted in terms of
+        assignment; attempting to invoke them before their variable definition results in a TypeError or ReferenceError.
+        Arrow functions, introduced in ES6, provide a syntactically concise alternative to traditional function
+        expressions using the fat arrow (=>) syntax. Beyond brevity—such as allowing implicit returns for
+        single-expression bodies—arrow functions do not create their own execution context. Instead, they lexically bind
+        the this keyword, inheriting it from the surrounding scope, which eliminates common scope-binding bugs when
+        passing functions as callbacks or event listeners inside classes and object methods.</p>
+
+    <h3>7. Arrays (Push, map, filter, find, reduce)</h3>
+    <p>Arrays in JavaScript are ordered collections of values that come equipped with built-in instance methods for
+        modifying, inspecting, and transforming data. The push() method is a mutating operation used to append one or
+        more elements to the end of an array, returning the array's new length without creating a copy. In contrast,
+        modern JavaScript heavily favors functional, non-mutating iteration methods that process array elements using
+        callback functions. The map() method transforms an array by applying a provided callback to every element and
+        returning a brand-new array of identical length containing the transformed results, making it ideal for mapping
+        raw data into formatted values or UI elements. <br>
+        For searching and selecting specific elements, filter() and find() evaluate each element against a testing
+        condition defined in a callback. The filter() method returns a new array containing every element that passes
+        the boolean test, effectively narrowing down datasets based on specific criteria. The find() method, on the
+        other hand, performs a short-circuiting search: it iterates through the array and immediately returns the first
+        individual element that satisfies the condition, returning undefined if no matching element is found. Finally,
+        reduce() is an expressive aggregation method that iterates over the array to condense all elements down to a
+        single outcome—such as a total sum, a combined object, or a flattened array—by continuously updating an
+        accumulator variable passed through each step of the iteration.</p>
+
+    <h3>8. Objects (keys, destructuring, spread)</h3>
+    <p>Objects in JavaScript are non-primitive data structures used to store keyed collections of data, consisting of
+        properties defined as key-value pairs where keys are strings (or Symbols) and values can be any data type.
+        Accessing and managing object keys can be done dynamically using Object.keys(), a utility method that extracts
+        all enumerable property names from an object and returns them as an array of strings, making it easy to iterate
+        over or count an object's properties. In modern JavaScript (ES6+), destructuring assignment provides a clean,
+        declarative syntax for extracting specific values directly out of an object and binding them to local variables
+        with matching property names, eliminating the need for repetitive dot-notation assignments and offering built-in
+        support for default values if a key is missing. <br> Complementing destructuring, the spread operator (...)
+        allows for concise shallow copying and merging of object properties. When used inside an object literal, the
+        spread operator unpacks all enumerable properties of an existing object into a new object, making operations
+        like creating modified copies or merging multiple configuration objects straightforward without mutating the
+        original source data. Together, object keys, destructuring, and the spread operator form the backbone of modern
+        JavaScript state management and data manipulation, allowing developers to write clean, immutable, and readable
+        code when working with complex nested structures.</p>
+
+    <h3>ES6 modules (import/export)</h3>
+    <p>ES6 modules (ECMAScript 2015 Modules) provide a standardized, native syntax for organizing JavaScript code into
+        separate, reusable files with explicitly defined dependencies and scoped namespaces. Before ES6, JavaScript
+        lacked an official module system, relying on global scripts or third-party solutions like CommonJS and AMD. With
+        ES6 modules, every module file operates in its own strict-mode scope, preventing variable leakage into the
+        global namespace. Code is shared between files using two primary mechanisms: exporting public values (variables,
+        functions, classes, or objects) from a source module and importing those values into target files where they are
+        needed. <br>
+        JavaScript supports two types of exports and imports: named and default. Named exports allow a single module to
+        export multiple items by explicitly declaring their names, which must then be imported using matching names
+        enclosed in curly braces {}. Default exports, limited to one per module file, allow an item to be exported
+        without a strict binding name, granting the importing file full freedom to alias the default export to any
+        identifier without using curly braces. Modules are loaded asynchronously, static in structure (meaning import
+        and export statements must reside at the top level of a file), and resolved at compile time, enabling modern
+        build tools and browsers to perform tree-shaking—the elimination of unused code—for optimal performance.</p>
+
+    <h3>Template Literals</h3>
+    <p>Template Literals in JavaScript, introduced in ES6, are string literals delimited by backticks (`) rather than
+        single or double quotes, offering a more flexible and expressive way to construct strings. Their primary
+        advantage is string interpolation, which allows expressions, variables, and function calls to be embedded
+        directly into strings using the ${expression} syntax, eliminating the need for cumbersome string concatenation
+        with the addition operator. Additionally, template literals natively preserve multi-line formatting, allowing
+        developers to break text across multiple lines directly inside the source code without using special escape
+        characters like \n or concatenation. <br>
+        Beyond basic string formatting, template literals support advanced features like tagged template literals. When
+        a template literal is preceded by a tag function, the string fragments and evaluated expressions are passed as
+        arguments to that function, enabling custom string parsing, domain-specific language processing, HTML escaping
+        to prevent cross-site scripting (XSS), or styling component abstractions like those seen in modern UI
+        frameworks. Furthermore, template literals provide access to raw string values via the String.raw tag function,
+        which processes strings exactly as written without interpreting backslash escape sequences, making them an
+        essential tool for clean, readable, and safe string manipulation in modern JavaScript.</p>
+
+</body>
+
+</html>
