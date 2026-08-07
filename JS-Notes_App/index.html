@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notes App - Search & Edit</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+
+  <div class="container">
+    <h1>Notes App</h1>
+
+    <!-- Search Input -->
+    <div class="search-container">
+      <input type="text" id="searchInput" class="search-input" placeholder="Search notes..." />
+    </div>
+
+    <!-- Note Input Form -->
+    <div class="note-input-container">
+      <textarea id="noteText" placeholder="Write your note here..."></textarea>
+      <div class="btn-group">
+        <button id="saveNoteBtn">Add Note</button>
+        <button id="cancelEditBtn" class="cancel-btn" style="display: none;">Cancel</button>
+      </div>
+    </div>
+
+    <!-- Notes Grid -->
+    <div class="notes-grid" id="notesGrid"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
