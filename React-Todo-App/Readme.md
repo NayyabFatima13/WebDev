@@ -82,6 +82,7 @@ todo-react-app/
 │
 └── README.md
 
+```
 # ⚙️ Installation & Setup
 ## 1. Clone the Repository
 git clone https://github.com/your-username/todo-react-app.git
