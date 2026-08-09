@@ -91,39 +91,39 @@ git clone https://github.com/your-username/todo-react-app.git
 cd todo-react-app
 
 ## 🖥️ Backend Setup
-Open a terminal and move into the backend folder:
+- Open a terminal and move into the backend folder:
 cd todo-backend
 
 ### Install dependencies:
 npm install
-Start the development server:
+- Start the development server:
 npm run dev
-The backend will run on:
+- The backend will run on:
 http://localhost:5000
-You should see:
+- You should see:
 Server running on http://localhost:5000
 
 ## 💻 Frontend Setup
-Open another terminal.
-Move into the frontend folder:
+- Open another terminal.
+- Move into the frontend folder:
 cd todo-frontend
 ### Install dependencies:
 npm install
-Start the React development server:
+- Start the React development server:
 npm run dev
-The frontend will normally run on:
+- The frontend will normally run on:
 http://localhost:5173
-Open the URL in your browser.
+- Open the URL in your browser.
 
 # 🔗 API Endpoints
 The React frontend communicates with the Express backend using REST APIs.
 ### Base URL:
 http://localhost:5000/api/todos
-<img width="566" height="212" alt="image" src="https://github.com/user-attachments/assets/2a327f10-67be-45bd-8f36-d9f730faa32b" />
+- <img width="566" height="212" alt="image" src="https://github.com/user-attachments/assets/2a327f10-67be-45bd-8f36-d9f730faa32b" />
 
 # 🔄 Application Flow
 The application follows this architecture:
-<img width="204" height="232" alt="image" src="https://github.com/user-attachments/assets/57cf7b1a-7709-4b86-bee4-06f7cc8718cb" />
+- <img width="204" height="232" alt="image" src="https://github.com/user-attachments/assets/57cf7b1a-7709-4b86-bee4-06f7cc8718cb" />
 
 # 🧪 Testing the API
 You can test the backend directly from your browser for GET requests.
@@ -133,7 +133,7 @@ http://localhost:5000
 http://localhost:5000/api
 - Get all todos
 http://localhost:5000/api/todos
-For POST, PUT, and DELETE requests, you can use tools such as Postman or Thunder Client.
+- For POST, PUT, and DELETE requests, you can use tools such as Postman or Thunder Client.
 
 # 🚧 Future Improvements
 The current project uses a JSON file as temporary storage. Future improvements could include:
