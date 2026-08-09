@@ -118,12 +118,12 @@ http://localhost:5173
 # 🔗 API Endpoints
 The React frontend communicates with the Express backend using REST APIs.
 ### Base URL:
-http://localhost:5000/api/todos
-- <img width="566" height="212" alt="image" src="https://github.com/user-attachments/assets/2a327f10-67be-45bd-8f36-d9f730faa32b" />
+- http://localhost:5000/api/todos
+ <img width="566" height="212" alt="image" src="https://github.com/user-attachments/assets/2a327f10-67be-45bd-8f36-d9f730faa32b" />
 
 # 🔄 Application Flow
-The application follows this architecture:
-- <img width="204" height="232" alt="image" src="https://github.com/user-attachments/assets/57cf7b1a-7709-4b86-bee4-06f7cc8718cb" />
+- The application follows this architecture:
+ <img width="204" height="232" alt="image" src="https://github.com/user-attachments/assets/57cf7b1a-7709-4b86-bee4-06f7cc8718cb" />
 
 # 🧪 Testing the API
 You can test the backend directly from your browser for GET requests.
